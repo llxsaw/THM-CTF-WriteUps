@@ -67,12 +67,12 @@ With an active shell as the `www-data` user, I began searching for the required 
 1.  **First Ingredient:** Found in the web root directory as `Sup3rS3cretPickl3Ingred.txt`.  
     *Content:* `***************`.
 
-    ![First Flag](11.png)
+    ![First Flag](011.png)
 
 3.  **Second Ingredient:** Located in Rick's home directory `/home/rick` in a file named `second ingredients`.  
     *Content:* `**********`.
 
-    ![Second Flag](12.png)
+    ![Second Flag](012.png)
 
 -----
 
@@ -92,7 +92,7 @@ As the **root** user, I navigated to the `/root` directory and retrieved the fin
 
   * **Result:** `****************`.
 
-![Third(Root) flag](14.png)
+![Third(Root) flag](014.png)
 
 -----
 
