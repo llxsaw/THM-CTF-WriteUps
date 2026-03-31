@@ -44,14 +44,19 @@ To circumvent this restriction and establish a stable foothold, I checked for th
 ```bash
 which python3
 ````
-
 The system returned `/usr/bin/python3`, confirming that a Python-based reverse shell was feasible.
+
+![Which Python](8.png)
 
 ### Establishing a Reverse Shell
 
 I generated a Python 3 reverse shell payload via [revshells.com](https://www.revshells.com).
 
+![Reverse Shell Generator](9.png)
+
 After initializing a **Netcat** listener on my attack machine (`nc -lvnp 4445`), I executed the payload in the Command Panel and successfully intercepted the incoming connection.
+
+![Reverse Shell Generator](10.png)
 
 -----
 
@@ -60,16 +65,22 @@ After initializing a **Netcat** listener on my attack machine (`nc -lvnp 4445`),
 With an active shell as the `www-data` user, I began searching for the required "ingredients" (flags).
 
 1.  **First Ingredient:** Found in the web root directory as `Sup3rS3cretPickl3Ingred.txt`.  
-    *Content:* `mr. meeseek hair`.
+    *Content:* `***************`.
 
-2.  **Second Ingredient:** Located in Rick's home directory `/home/rick` in a file named `second ingredients`.  
-    *Content:* `1 jerry tear`.
+    ![First Flag](11.png)
+
+3.  **Second Ingredient:** Located in Rick's home directory `/home/rick` in a file named `second ingredients`.  
+    *Content:* `**********`.
+
+    ![Second Flag](12.png)
 
 -----
 
 ## ⚡ 4. Privilege Escalation
 
 To gain full control over the target system, I audited the current user's permissions using `sudo -l`.
+
+![Sudo Permissions](13.png)
 
 The audit revealed a critical misconfiguration: the `www-data` user was permitted to execute **all commands** as `sudo` without password authentication. I leveraged this to spawn a root shell:
 
@@ -79,7 +90,9 @@ sudo bash -i
 
 As the **root** user, I navigated to the `/root` directory and retrieved the final ingredient from `3rd.txt`.
 
-  * **Result:** `3rd ingredients: fleeb juice`.
+  * **Result:** `****************`.
+
+![Third(Root) flag](14.png)
 
 -----
 
