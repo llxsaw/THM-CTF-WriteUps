@@ -1,6 +1,3 @@
-
-
-````markdown
 # 🥒 TryHackMe: Pickle Rick Writeup
 > **Target OS:** Linux | **Difficulty:** Easy | **Category:** Web Exploitation / Privilege Escalation
 
