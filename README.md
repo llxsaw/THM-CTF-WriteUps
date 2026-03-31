@@ -38,4 +38,4 @@ This repository serves as my personal knowledge base and a showcase of my techni
 These writeups are for educational purposes only. I do not encourage or support unauthorized access to any systems. Always act ethically and follow the rules of engagement.
 
 ---
-*Contact me on [LinkedIn](https://www.linkedin.com/in/artem-holynskyi/) or via [Email](holynskyiartem.work@gmail.com) for collaborations.*
+*Contact me on [LinkedIn](https://www.linkedin.com/in/artem-holynskyi-399b7a2ba/) or via [Email](holynskyiartem.work@gmail.com) for collaborations.*
