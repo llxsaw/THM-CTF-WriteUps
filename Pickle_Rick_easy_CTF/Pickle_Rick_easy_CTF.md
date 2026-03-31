@@ -7,25 +7,25 @@
 
 The engagement began with an **Nmap** scan to identify open ports and active services. The scan revealed two primary entry points: **22 (SSH)** and **80 (HTTP)**.
 
-![Nmap Scan](3.png)
+![Nmap Scan](images/3.png)
 
 ### Web Exploration
 I proceeded to investigate the web application running on port 80.
 
-![Main Page](1.png)
+![Main Page](images/1.png)
 
 By inspecting the **page source code**, I discovered a hidden HTML comment containing a potential username: `R1ckRul3s`.
 
-![Source Code Username](2.png)
+![Source Code Username](images/2.png)
 
 A quick check of the `/robots.txt` file yielded another sensitive string: `Wubbalubbadubdub`. Based on the context, this appeared to be a candidate for a password.
 
-![Robots.txt](4.png)
+![Robots.txt](images/4.png)
 
 ### Directory Brute-forcing
 To map the attack surface, I used **Gobuster** for directory discovery. This revealed several critical PHP endpoints, including `/login.php` and `/portal.php`.
 
-![Gobuster Scan](5.png)
+![Gobuster Scan](images/5.png)
 
 ---
 
@@ -33,12 +33,12 @@ To map the attack surface, I used **Gobuster** for directory discovery. This rev
 
 Using the discovered credentials (`R1ckRul3s` : `Wubbalubbadubdub`), I successfully authenticated to the administrative **Command Panel**.
 
-![Command Panel ls](6.png)
+![Command Panel ls](images/6.png)
 
 ### Bypassing Command Filters
 Initial attempts to read files directly using common utilities like `cat` were unsuccessful, as the application implemented a command blacklist.
 
-![Command Disabled](7.png)
+![Command Disabled](images/7.png)
 
 To circumvent this restriction and establish a stable foothold, I checked for the presence of **Python 3**:
 ```bash
@@ -46,17 +46,17 @@ which python3
 ````
 The system returned `/usr/bin/python3`, confirming that a Python-based reverse shell was feasible.
 
-![Which Python](8.png)
+![Which Python](images/8.png)
 
 ### Establishing a Reverse Shell
 
 I generated a Python 3 reverse shell payload via [revshells.com](https://www.revshells.com).
 
-![Reverse Shell Generator](9.png)
+![Reverse Shell Generator](images/9.png)
 
 After initializing a **Netcat** listener on my attack machine (`nc -lvnp 4445`), I executed the payload in the Command Panel and successfully intercepted the incoming connection.
 
-![Reverse Shell Generator](10.png)
+![Reverse Shell Generator](images/10.png)
 
 -----
 
@@ -67,12 +67,12 @@ With an active shell as the `www-data` user, I began searching for the required 
 1.  **First Ingredient:** Found in the web root directory as `Sup3rS3cretPickl3Ingred.txt`.  
     *Content:* `***************`.
 
-    ![First Flag](011.png)
+    ![First Flag](images/011.png)
 
 3.  **Second Ingredient:** Located in Rick's home directory `/home/rick` in a file named `second ingredients`.  
     *Content:* `**********`.
 
-    ![Second Flag](012.png)
+    ![Second Flag](images/012.png)
 
 -----
 
@@ -80,7 +80,7 @@ With an active shell as the `www-data` user, I began searching for the required 
 
 To gain full control over the target system, I audited the current user's permissions using `sudo -l`.
 
-![Sudo Permissions](13.png)
+![Sudo Permissions](images/13.png)
 
 The audit revealed a critical misconfiguration: the `www-data` user was permitted to execute **all commands** as `sudo` without password authentication. I leveraged this to spawn a root shell:
 
@@ -92,7 +92,7 @@ As the **root** user, I navigated to the `/root` directory and retrieved the fin
 
   * **Result:** `****************`.
 
-![Third(Root) flag](014.png)
+![Third(Root) flag](images/014.png)
 
 -----
 
