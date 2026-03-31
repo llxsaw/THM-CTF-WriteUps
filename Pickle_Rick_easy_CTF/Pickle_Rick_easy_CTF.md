@@ -1,67 +1,101 @@
-﻿
-```
-** TryHackMe - Pickle Rick CTF Writeup**
 
-## 1. Reconnaissance
-First, I ran an Nmap scan to find open ports and running services. The scan revealed that ports 22 (SSH) and 80 (HTTP) were open.
 
-![Nmap Scan](./3.png)
+````markdown
+# 🥒 TryHackMe: Pickle Rick Writeup
+> **Target OS:** Linux | **Difficulty:** Easy | **Category:** Web Exploitation / Privilege Escalation
 
-I visited the main website on port 80.
+---
+
+## 🔍 1. Reconnaissance
+
+The engagement began with an **Nmap** scan to identify open ports and active services. The scan revealed two primary entry points: **22 (SSH)** and **80 (HTTP)**.
+
+![Nmap Scan](3.png)
+
+### Web Exploration
+I proceeded to investigate the web application running on port 80.
 
 ![Main Page](1.png)
 
-Inspecting the source code of the main web page revealed a hidden comment containing a username: `R1ckRul3s`.
+By inspecting the **page source code**, I discovered a hidden HTML comment containing a potential username: `R1ckRul3s`.
 
 ![Source Code Username](2.png)
 
-I also checked the `/robots.txt` file and discovered a strange string: `Wubbalubbadubdub`, which looked like a potential password.
+A quick check of the `/robots.txt` file yielded another sensitive string: `Wubbalubbadubdub`. Based on the context, this appeared to be a candidate for a password.
 
 ![Robots.txt](4.png)
 
-To find hidden directories, I ran a Gobuster scan, which revealed several interesting pages, including `/login.php` and `/portal.php`.
+### Directory Brute-forcing
+To map the attack surface, I used **Gobuster** for directory discovery. This revealed several critical PHP endpoints, including `/login.php` and `/portal.php`.
 
 ![Gobuster Scan](5.png)
 
-## 2. Initial Access
-Using the credentials `R1ckRul3s` and `Wubbalubbadubdub`, I successfully logged into the web application and accessed a "Command Panel". I executed the `ls` command to view the current directory contents.
+---
+
+## 🚪 2. Initial Access
+
+Using the discovered credentials (`R1ckRul3s` : `Wubbalubbadubdub`), I successfully authenticated to the administrative **Command Panel**.
 
 ![Command Panel ls](6.png)
 
-However, trying to read files directly (like using the `cat` command) was blocked by the application.
+### Bypassing Command Filters
+Initial attempts to read files directly using common utilities like `cat` were unsuccessful, as the application implemented a command blacklist.
 
 ![Command Disabled](7.png)
 
-To bypass this restriction and gain a proper shell, I checked if Python 3 was available by running `which python3`. It returned `/usr/bin/python3`.
+To circumvent this restriction and establish a stable foothold, I checked for the presence of **Python 3**:
+```bash
+which python3
+````
 
-![Which Python3](8.png)
+The system returned `/usr/bin/python3`, confirming that a Python-based reverse shell was feasible.
 
-I generated a Python 3 reverse shell payload using revshells.com.
+### Establishing a Reverse Shell
 
-![Revshells Payload](9.png)
+I generated a Python 3 reverse shell payload via [revshells.com](https://www.revshells.com).
 
-After setting up a Netcat listener on my attack machine (`nc -lvnp 4445`), I executed the payload in the Command Panel and successfully caught a reverse shell.
+After initializing a **Netcat** listener on my attack machine (`nc -lvnp 4445`), I executed the payload in the Command Panel and successfully intercepted the incoming connection.
 
-![Netcat Shell Caught](10.png)
+-----
 
-## 3. Finding the Ingredients (Flags)
-With a functional shell as the `www-data` user, I was able to read the first flag file, `Sup3rS3cretPickl3Ingred.txt`, which contained the first ingredient: `mr. meeseek hair`.
+## 🧪 3. Gathering Ingredients (Flags)
 
-![First Ingredient](11.png)
+With an active shell as the `www-data` user, I began searching for the required "ingredients" (flags).
 
-I then navigated to the `/home/rick` directory, listed its contents, and found the second flag in a file named `second ingredients`. Reading it revealed the text: `1 jerry tear`.
+1.  **First Ingredient:** Found in the web root directory as `Sup3rS3cretPickl3Ingred.txt`.  
+    *Content:* `mr. meeseek hair`.
 
-![Second Ingredient](12.png)
+2.  **Second Ingredient:** Located in Rick's home directory `/home/rick` in a file named `second ingredients`.  
+    *Content:* `1 jerry tear`.
 
-## 4. Privilege Escalation
-To elevate my privileges, I checked my sudo permissions by running `sudo -l`. I discovered that the `www-data` user was allowed to run any command with `sudo` without providing a password. I easily escalated to the `root` user by running `sudo bash -i`.
+-----
 
-![Sudo Privileges](13.png)
+## ⚡ 4. Privilege Escalation
 
-Finally, I navigated to the `/root` directory, where I found the file `3rd.txt`. Reading this file gave me the final ingredient: `3rd ingredients: fleeb juice`.
+To gain full control over the target system, I audited the current user's permissions using `sudo -l`.
 
-![Third Ingredient](14.png)
+The audit revealed a critical misconfiguration: the `www-data` user was permitted to execute **all commands** as `sudo` without password authentication. I leveraged this to spawn a root shell:
+
+```bash
+sudo bash -i
+```
+
+As the **root** user, I navigated to the `/root` directory and retrieved the final ingredient from `3rd.txt`.
+
+  * **Result:** `3rd ingredients: fleeb juice`.
+
+-----
+
+### 🏁 Conclusion
+
+The machine was successfully compromised. The primary vulnerabilities exploited were **Information Disclosure** (Source Code/Robots.txt), **Command Injection**, and **Insecure Sudo Permissions**.
 
 ```
 
+### Pro-Tip for your GitHub:
+Since this is now in English, it serves as a great piece of "Evidence of Learning" for your future career. 
 
+**Quick check:** Make sure you deleted that `./` prefix from your previous attempt. In the code above, I used the simple `(filename.png)` format, which works best when the `.md` and the images are in the same folder. 
+
+Does the **Preview** look okay on GitHub now?
+```
