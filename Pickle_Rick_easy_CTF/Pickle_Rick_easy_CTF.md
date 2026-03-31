@@ -87,12 +87,4 @@ As the **root** user, I navigated to the `/root` directory and retrieved the fin
 
 The machine was successfully compromised. The primary vulnerabilities exploited were **Information Disclosure** (Source Code/Robots.txt), **Command Injection**, and **Insecure Sudo Permissions**.
 
-```
 
-### Pro-Tip for your GitHub:
-Since this is now in English, it serves as a great piece of "Evidence of Learning" for your future career. 
-
-**Quick check:** Make sure you deleted that `./` prefix from your previous attempt. In the code above, I used the simple `(filename.png)` format, which works best when the `.md` and the images are in the same folder. 
-
-Does the **Preview** look okay on GitHub now?
-```
