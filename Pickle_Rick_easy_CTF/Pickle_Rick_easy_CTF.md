@@ -5,7 +5,7 @@
 ## 1. Reconnaissance
 First, I ran an Nmap scan to find open ports and running services. The scan revealed that ports 22 (SSH) and 80 (HTTP) were open.
 
-![Nmap Scan](3.png)
+![Nmap Scan](./3.png)
 
 I visited the main website on port 80.
 
