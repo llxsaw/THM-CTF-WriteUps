@@ -44,12 +44,12 @@ Hydra successfully identified a valid password: **********.
 Foothold
 I logged into the machine via SSH using the recovered credentials.
 
-![hydra](images/6.png)
+![hydra](images/06.png)
 ![ssh_connection](images/7.png)
 
 After gaining access, I located the first flag in the Desktop directory.
 
-![first_flag](images/10.png)
+![first_flag](images/010.png)
 
 User Flag: **************
 
@@ -71,7 +71,7 @@ Bash
 sudo /bin/tar -cf /dev/null /dev/null --checkpoint=1 --checkpoint-action=exec=/bin/sh
 This successfully spawned a root shell. I then navigated to the /root directory to claim the final flag.
 
-![sudo -l](images/9.png)
+![sudo -l](images/09.png)
 
 Root Flag: ****************
 
