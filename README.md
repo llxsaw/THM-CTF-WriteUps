@@ -15,7 +15,7 @@ This repository serves as my personal knowledge base and a showcase of my techni
 | Room Name | Difficulty | Category | Writeup Link |
 | :--- | :--- | :--- | :--- |
 | **Pickle Rick** | Easy | Web / Linux | [View Writeup](./Pickle_Rick_easy_CTF/Pickle_Rick_easy_CTF.md) |
-| **Example Room** | Medium | Active Directory | [Coming Soon](#) |
+| **Bounty Hunter** | Easy | FTP Enumeration / SSH Brute-force / Sudo Exploitation | [View Writeup](./Bounty_hunter_easy_CTF/Bounty_hunter_easy_CTF.md) |
 
 ---
 
