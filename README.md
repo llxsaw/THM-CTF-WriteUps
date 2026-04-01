@@ -16,6 +16,7 @@ This repository serves as my personal knowledge base and a showcase of my techni
 | :--- | :--- | :--- | :--- |
 | **Pickle Rick** | Easy | Web / Linux | [View Writeup](./Pickle_Rick_easy_CTF/Pickle_Rick_easy_CTF.md) |
 | **Bounty Hunter** | Easy | FTP Enumeration / SSH Brute-force / Sudo Exploitation | [View Writeup](./Bounty_Hunter_easy_CTF/Bounty_Hunter_easy_CTF.md) |
+| **Simple CTF** | Easy | SQL Injection / CMS Exploitation / Sudo Escape | [View Writeup](./Simple_CTF_easy_CTF/Simple_CTF_easy_CTF.md) |
 
 ---
 
