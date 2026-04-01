@@ -53,7 +53,7 @@ I utilized a Python-based exploit for this CVE. Due to the **Time-based** nature
 
 The exploit successfully dumped the database, revealing the username **mitch** and cracking the password hash using a common wordlist.
 * **Username:** `mitch`
-* **Password:** `secret`
+* **Password:** `**********`
 
 ![Recovered Credentials](images/11.png)
 
