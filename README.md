@@ -12,6 +12,7 @@ This repository serves as my personal knowledge base and a showcase of my techni
 
 ## 📂 Room Index
 
+Easy Rooms:
 | Room Name | Difficulty | Category | Writeup Link |
 | :--- | :--- | :--- | :--- |
 | **Pickle Rick** | Easy | Web / Linux | [View Writeup](./Pickle_Rick_easy_CTF/Pickle_Rick_easy_CTF.md) |
@@ -19,6 +20,13 @@ This repository serves as my personal knowledge base and a showcase of my techni
 | **Simple CTF** | Easy | SQL Injection / CMS Exploitation / Sudo Escape | [View Writeup](./Simple_CTF_easy_CTF/Simple_CTF_easy_CTF.md) |
 
 ---
+
+Medium Rooms:
+| Room Name | Difficulty | Category | Writeup Link |
+| :--- | :--- | :--- | :--- |
+| **Boiler CTF** | Medium | Web / Linux | [View Writeup](./Boiler_CTF_medium_CTF/Boiler_CTF_medium_CTF.md) |
+| **Anonymous** | Medium | FTP Enumeration / SSH Brute-force / Sudo Exploitation | [View Writeup](./Anonymous_medium_CTF/Anonymous_medium_CTF.md) |
+| **Relevant** | Medium | SQL Injection / CMS Exploitation / Sudo Escape | [View Writeup](./Relevant_medium_CTF/Relevant_medium_CTF.md) |
 
 ## 🛠️ Tools Frequently Used
 * **Recon:** `Nmap`, `Gobuster`, `FFUF`, `Nikto`
