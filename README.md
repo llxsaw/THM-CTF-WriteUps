@@ -24,9 +24,9 @@ Easy Rooms:
 Medium Rooms:
 | Room Name | Difficulty | Category | Writeup Link |
 | :--- | :--- | :--- | :--- |
-| **Boiler CTF** | Medium | Web / Linux | [View Writeup](./Boiler_CTF_medium_CTF/Boiler_CTF_medium_CTF.md) |
-| **Anonymous** | Medium | FTP Enumeration / SSH Brute-force / Sudo Exploitation | [View Writeup](./Anonymous_medium_CTF/Anonymous_medium_CTF.md) |
-| **Relevant** | Medium | SQL Injection / CMS Exploitation / Sudo Escape | [View Writeup](./Relevant_medium_CTF/Relevant_medium_CTF.md) |
+| **Boiler CTF** | Medium | Web Enumeration / Log Analysis / SUID | [View Writeup](./Boiler_CTF_medium_CTF/Boiler_CTF_medium_CTF.md) |
+| **Anonymous** | Medium | FTP Misconfiguration / Cronjobs / SUID | [View Writeup](./Anonymous_medium_CTF/Anonymous_medium_CTF.md) |
+| **Relevant** | Medium | SMB Exploitation / Web Shell / Windows PrivEsc | [View Writeup](./Relevant_medium_CTF/Relevant_medium_CTF.md) |
 
 ## 🛠️ Tools Frequently Used
 * **Recon:** `Nmap`, `Gobuster`, `FFUF`, `Nikto`
